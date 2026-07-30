@@ -1,0 +1,64 @@
+::1 - - [31/Jul/2026 02:00:14] "GET /index.html HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /styles.css HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /script.js HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /assets/logo_original.png HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /assets/videos/demo.mp4 HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /assets/background.png HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /assets/services_illustration.png HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:14] "GET /assets/videos/intro.mp4 HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:15] "GET /assets/videos/intro.mp4 HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:00:16] code 404, message File not found
+::1 - - [31/Jul/2026 02:00:16] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('::1', 56224, 0, 0)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\server.py", line 1422, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\server.py", line 732, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "C:\Python314\Lib\http\server.py", line 739, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\server.py", line 942, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\shutil.py", line 257, in copyfileobj
+    fdst_write(buf)
+    ~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+----------------------------------------
+::1 - - [31/Jul/2026 02:00:30] code 404, message File not found
+::1 - - [31/Jul/2026 02:00:30] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [31/Jul/2026 02:01:07] "GET /services.html HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:01:07] "GET /styles.css HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:01:58] "GET /contactus.html HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:01:58] "GET /styles.css HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:01:58] "GET /about-us.html HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:02:13] "GET /index.html HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:19:06] "GET /index.html HTTP/1.1" 200 -
+::1 - - [31/Jul/2026 02:19:06] "GET /styles.css HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:19:06] "GET /assets/background.png HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:19:06] "GET /assets/logo_original.png HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:19:06] "GET /assets/services_illustration.png HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:19:06] "GET /script.js HTTP/1.1" 304 -
+::1 - - [31/Jul/2026 02:19:23] code 404, message File not found
+::1 - - [31/Jul/2026 02:19:23] "GET /favicon.ico HTTP/1.1" 404 -
