@@ -83,8 +83,9 @@
     counters.forEach(function (el) { cIo.observe(el); });
   }
 
-  /* ---------- 3D card tilt ---------- */
+  /* ---------- 3D card tilt + glare ---------- */
   function addTilt(el) {
+    const glare = el.querySelector('.glare');
     el.addEventListener('mousemove', function (e) {
       const rect = el.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -94,13 +95,18 @@
       const dx = (x - cx) / cx;
       const dy = (y - cy) / cy;
       el.style.transform = 'perspective(1000px) rotateX(' + (-dy * 4) + 'deg) rotateY(' + (dx * 4) + 'deg) translateZ(12px)';
+      if (glare) {
+        glare.style.background = 'radial-gradient(circle at ' + x + 'px ' + y + 'px, rgba(255,255,255,.22) 0%, transparent 60%)';
+        glare.style.opacity = '1';
+      }
     });
     el.addEventListener('mouseleave', function () {
       el.style.transform = '';
+      if (glare) glare.style.opacity = '0';
     });
   }
 
-  document.querySelectorAll('.voxime-scope .card, .voxime-scope .plan, .voxime-scope .product-card, .voxime-scope .team-card').forEach(addTilt);
+  document.querySelectorAll('.voxime-scope .card, .voxime-scope .plan, .voxime-scope .product-card, .voxime-scope .team-card, .voxime-scope .flow > div').forEach(addTilt);
 
   /* ---------- Back to top ---------- */
   const totop = document.querySelector('.voxime-scope .totop');
@@ -285,6 +291,98 @@
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) cancelAnimationFrame(animationId);
       else draw();
+    });
+  }
+
+  /* ---------- Scroll progress bar ---------- */
+  const progress = document.createElement('div');
+  progress.className = 'vox-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(progress);
+  let progressTicking = false;
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+    progressTicking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!progressTicking) {
+      progressTicking = true;
+      requestAnimationFrame(updateProgress);
+    }
+  }, { passive: true });
+  updateProgress();
+
+  /* ---------- Mouse cursor glow (desktop + motion-aware) ---------- */
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+  const prefersMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+  if (finePointer && prefersMotion) {
+    const glow = document.createElement('div');
+    glow.className = 'vox-cursor';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(glow);
+    let gx = window.innerWidth / 2, gy = window.innerHeight / 2;
+    let tx = gx, ty = gy, rafGlow = null;
+    function loopGlow() {
+      gx += (tx - gx) * 0.16;
+      gy += (ty - gy) * 0.16;
+      glow.style.transform = 'translate3d(' + (gx - 300) + 'px,' + (gy - 300) + 'px,0)';
+      rafGlow = requestAnimationFrame(loopGlow);
+    }
+    document.addEventListener('mousemove', function (e) {
+      tx = e.clientX;
+      ty = e.clientY;
+      glow.classList.add('on');
+      const t = e.target;
+      if (t && t.closest) {
+        glow.classList.toggle('hover', !!t.closest('a, button, summary, input, textarea, select, .btn, .cta, .flow > div, .product-card, .card, .plan, .team-card'));
+      }
+      if (!rafGlow) loopGlow();
+    }, { passive: true });
+    document.addEventListener('mouseleave', function () {
+      glow.classList.remove('on');
+    });
+  }
+
+  /* ---------- Hero 3D parallax ---------- */
+  if (finePointer && prefersMotion) {
+    const hero = document.querySelector('.voxime-scope .hero');
+    if (hero) {
+      const layers = hero.querySelectorAll('[data-depth]');
+      if (layers.length) {
+        let rafP = null;
+        let px = 0, py = 0;
+        hero.addEventListener('mousemove', function (e) {
+          const r = hero.getBoundingClientRect();
+          px = (e.clientX - r.left) / r.width - 0.5;
+          py = (e.clientY - r.top) / r.height - 0.5;
+          if (rafP) return;
+          rafP = requestAnimationFrame(function () {
+            layers.forEach(function (l) {
+              const d = parseFloat(l.getAttribute('data-depth')) || 0;
+              l.style.transform = 'translate3d(' + (px * d * -60) + 'px,' + (py * d * -40) + 'px,0)';
+            });
+            rafP = null;
+          });
+        }, { passive: true });
+        hero.addEventListener('mouseleave', function () {
+          layers.forEach(function (l) { l.style.transform = ''; });
+        });
+      }
+    }
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  if (finePointer && prefersMotion) {
+    document.querySelectorAll('.voxime-scope .magnetic').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.3;
+        const y = (e.clientY - r.top - r.height / 2) * 0.4;
+        el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      }, { passive: true });
+      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
     });
   }
 })();

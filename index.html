@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Voxime.ai answers every call, qualifies your leads, and books appointments automatically — 24/7.">
+  <meta name="theme-color" content="#030712">
   <title>Voxime.ai | Every Missed Call Is a Job You Didn't Get</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
@@ -13,12 +14,11 @@
 
   <header class="header">
     <div class="container">
-      <a class="brand" href="index.html"><img src="assets/logo_original.png" alt="Voxime.ai" height="48"></a>
+      <a class="brand" href="index.html"><img src="assets/logo_transparent.png" alt="Voxime.ai" height="58"></a>
       <button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
       <nav>
         <a aria-current="page" href="index.html">Home</a>
         <a href="about-us.html">About Us</a>
-        <a href="services.html">Services</a>
         <a href="contactus.html">Contact us</a>
       </nav>
       <a class="cta" href="contactus.html">Contact Us to Get Started →</a>
@@ -27,22 +27,25 @@
 
   <main>
     <section class="hero">
-      <img class="hero-bg" src="assets/background.png" alt="" aria-hidden="true" width="800" height="1200" onerror="this.style.display='none'">
-      <div class="glow-orb" aria-hidden="true" style="left:-6%;top:8%"></div>
-      <div class="glow-orb orb-2" aria-hidden="true" style="right:-8%;bottom:-6%"></div>
+      <div class="hero-scene" data-depth="0.05">
+        <img class="hero-bg" src="assets/background.png" alt="" aria-hidden="true" width="800" height="1200" onerror="this.style.display='none'">
+      </div>
+      <div class="glow-orb" aria-hidden="true" data-depth="0.03" style="left:-6%;top:8%"></div>
+      <div class="glow-orb orb-2" aria-hidden="true" data-depth="0.02" style="right:-8%;bottom:-6%"></div>
       <div class="container hero-grid">
         <div data-reveal>
           <p class="eyebrow">AI-powered appointment setting</p>
           <h1>Every Missed Call Is a Job You Didn't Get.</h1>
           <p class="lede">Voxime.ai answers every call, qualifies your leads, and books appointments automatically — 24/7, even when you're on the job.</p>
           <div class="hero-actions">
-            <a class="btn amber" href="contactus.html">Contact Us to Get Started →</a>
-            <a class="btn ghost" href="#how-it-works">See how it works</a>
+            <a class="btn amber magnetic" href="contactus.html">Contact Us to Get Started →</a>
+            <a class="btn ghost magnetic" href="#how-it-works">See how it works</a>
           </div>
           <p class="microcopy"><span class="dot"></span>Configured by real people. Built for busy local businesses.</p>
         </div>
 
         <aside class="product-card" aria-label="Live Voxime.ai call dashboard" data-reveal style="transition-delay:.1s">
+          <span class="glare" aria-hidden="true"></span>
           <div class="product-top"><span>Voxime.ai call desk</span><span class="live"><i class="pulse"></i>LIVE NOW</span></div>
           <div class="live-wave" aria-hidden="true">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
@@ -51,6 +54,25 @@
           <div class="call-row"><span class="avatar">JD</span><div><strong>Job matched</strong><p>Southside · Emergency repair</p></div><span class="status">Booked</span></div>
           <div class="insight">✓ Appointment added to your calendar · Team notified</div>
         </aside>
+      </div>
+    </section>
+
+    <section class="stats-strip">
+      <div class="container">
+        <div class="signal-bar" data-reveal>
+          <div class="signal">
+            <b data-count="24" data-suffix="/7">24/7</b>
+            <span>Answers every call — nights, weekends &amp; holidays</span>
+          </div>
+          <div class="signal">
+            <b data-count="48" data-suffix="h">48h</b>
+            <span>From sign-up to a fully configured, live system</span>
+          </div>
+          <div class="signal">
+            <b data-count="100" data-suffix="%">100%</b>
+            <span>Every call answered — zero voicemail, zero missed jobs</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -114,7 +136,7 @@
           <div data-reveal>
             <p>We are an AI appointment setting service that answers every call, qualifies every lead, and books every appointment, automatically, 24/7.</p>
             <p>We don't just provide a tool. We become the voice of your business.</p>
-            <a class="btn amber" href="about-us.html">Learn More →</a>
+            <a class="btn amber magnetic" href="about-us.html">Learn More →</a>
           </div>
           <aside class="side-panel" data-reveal style="transition-delay:.1s">
             <p class="eyebrow">Our Promise</p>
@@ -134,26 +156,24 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-brand">
-        <a class="brand" href="index.html"><img src="assets/logo_original.png" alt="Voxime.ai" height="48"></a>
+        <a class="brand" href="index.html"><img src="assets/logo_transparent.png" alt="Voxime.ai" height="40"></a>
         <p>AI-powered appointment setting for service businesses — answers, qualifies and books calls around the clock.</p>
       </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <p>Site</p>
-          <a href="index.html">Home</a>
-          <a href="about-us.html">About Us</a>
-          <a href="services.html">Services</a>
-          <a href="contactus.html">Contact us</a>
-        </div>
-        <div class="footer-col">
-          <p>Legal</p>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="contactus.html">Data requests</a>
-        </div>
+      <div class="footer-col">
+        <p>Site</p>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contactus.html">Contact us</a>
+      </div>
+      <div class="footer-col">
+        <p>Legal</p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+        <a href="contactus.html">Data requests</a>
       </div>
       <div class="footer-bottom">
         <span>Voximeai.com · contact@voximeai.com</span>
-        <span class="footer-links"><a href="privacy-policy.html">Privacy</a><a href="contactus.html">Contact</a></span>
+        <span class="footer-links"><a href="privacy-policy.html">Privacy</a><a href="terms-and-conditions.html">Terms</a><a href="contactus.html">Contact</a></span>
       </div>
       <div class="footer-copyright">
         © Copyright 2026. Voxime.ai. All rights reserved.

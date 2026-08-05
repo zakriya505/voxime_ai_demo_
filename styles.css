@@ -243,11 +243,17 @@ body.voxime-scope {
   box-shadow:0 12px 40px rgba(0,0,0,.35);
 }
 .voxime-scope .header .container {
-  height:92px;
+  height:128px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:28px;
+  gap:32px;
+}
+.voxime-scope .header .cta {
+  padding:12px 22px;
+  font-size:.9rem;
+  border-radius:10px;
+  white-space:nowrap;
 }
 .voxime-scope .brand {
   display:flex;
@@ -258,16 +264,22 @@ body.voxime-scope {
   color:var(--vox-text);
 }
 .voxime-scope .brand b { color:var(--vox-sky); font-weight:800; }
-.voxime-scope .brand img { height:54px; width:auto; }
-.voxime-scope .footer-brand .brand img { height:46px; }
+.voxime-scope .brand img {
+  height:58px;
+  width:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 0 18px rgba(56,189,248,.08));
+}
+.voxime-scope .footer-brand .brand img { height:40px; filter:none; }
 
 .voxime-scope nav {
   display:flex;
   align-items:center;
-  gap:32px;
-  color:var(--vox-text-3);
-  font-size:.92rem;
+  gap:34px;
+  color:var(--vox-text-2);
+  font-size:.95rem;
   font-weight:600;
+  letter-spacing:.01em;
 }
 .voxime-scope nav a {
   position:relative;
@@ -319,7 +331,8 @@ body.voxime-scope {
 .voxime-scope .hero {
   position:relative;
   overflow:hidden;
-  padding:110px 0 100px;
+  padding:92px 0 104px;
+  perspective:1200px;
   background:
     radial-gradient(circle at 10% 20%, rgba(56,189,248,.10) 0%, transparent 35%),
     radial-gradient(circle at 90% 80%, rgba(245,158,11,.08) 0%, transparent 35%),
@@ -434,7 +447,7 @@ body.voxime-scope {
   border:1px solid var(--vox-line);
   box-shadow:var(--vox-shadow-lg);
   transform-style:preserve-3d;
-  transition:transform .4s var(--vox-ease), box-shadow .4s;
+  transition:transform .16s ease-out, box-shadow .4s var(--vox-ease);
 }
 .voxime-scope .product-card:hover {
   transform:perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(8px);
@@ -553,6 +566,7 @@ body.voxime-scope {
 
 /* ---- Sections ---- */
 .voxime-scope .section { padding:110px 0; position:relative; }
+.voxime-scope section[id] { scroll-margin-top:150px; }
 .voxime-scope .tint { background:var(--vox-navy); }
 .voxime-scope .section-head { max-width:760px; margin:0 auto 52px; text-align:center; }
 .voxime-scope .section-head p { color:var(--vox-text-3); font-size:1.05rem; }
@@ -615,15 +629,18 @@ body.voxime-scope {
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:42px;
+  width:auto;
+  min-width:42px;
   height:42px;
+  padding:0 9px;
   border-radius:12px;
   margin-bottom:22px;
   background:linear-gradient(135deg, var(--vox-sky), var(--vox-sky-deep));
   color:var(--vox-void);
-  font:800 .78rem 'Manrope',sans-serif;
+  font:800 .72rem 'Manrope',sans-serif;
   text-transform:uppercase;
-  letter-spacing:.1em;
+  letter-spacing:.08em;
+  white-space:nowrap;
 }
 .voxime-scope .flow h3 { color:var(--vox-text); }
 .voxime-scope .flow p { margin:0; color:var(--vox-text-3); font-size:.95rem; }
@@ -744,6 +761,7 @@ body.voxime-scope {
   margin:0 auto 18px;
   border-radius:50%;
   padding:4px;
+  overflow:hidden;
   background:linear-gradient(135deg, var(--vox-sky), var(--vox-amber));
   box-shadow:0 12px 40px rgba(0,0,0,.25);
   transition:transform .35s var(--vox-ease), box-shadow .35s;
@@ -755,6 +773,7 @@ body.voxime-scope {
   width:calc(100% - 2px);
   height:calc(100% - 2px);
   object-fit:cover;
+  object-position:center 24%;
   border-radius:50%;
   border:2px solid var(--vox-navy-2);
   filter:grayscale(15%) contrast(1.05);
@@ -809,15 +828,14 @@ body.voxime-scope {
   width:min(420px, 40vw);
   opacity:.22;
 }
-.voxime-scope .contact-split { align-items:stretch; }
+.voxime-scope .contact-split { align-items:start; }
 .voxime-scope .contact-visual {
   display:flex;
   flex-direction:column;
   gap:32px;
-  justify-content:center;
+  justify-content:flex-start;
 }
 .voxime-scope .contact-copy { min-width:0; }
-.voxime-scope .contact-split { align-items:center; }
 .voxime-scope .video-embed {
   max-width:960px;
   margin:0 auto;
@@ -1073,12 +1091,13 @@ body.voxime-scope {
   color:var(--vox-text-3);
 }
 .voxime-scope .footer .container {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  flex-wrap:wrap;
-  gap:32px;
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr;
+  align-items:start;
+  gap:44px 64px;
 }
+.voxime-scope .footer-bottom { grid-column:1 / -1; }
+.voxime-scope .footer-copyright { grid-column:1 / -1; }
 .voxime-scope .footer-brand { max-width:320px; }
 .voxime-scope .footer-brand .brand { color:var(--vox-text); margin-bottom:12px; }
 .voxime-scope .footer-brand p { color:var(--vox-text-3); font-size:.88rem; line-height:1.6; }
@@ -1224,6 +1243,7 @@ body.voxime-scope {
 /* ---- Policy / TOC ---- */
 .voxime-scope .policy { max-width:900px; }
 .voxime-scope .policy h2 { margin-top:48px; font-size:1.6rem; }
+.voxime-scope.terms-page .policy > .card + h2 { margin-top:64px; }
 .voxime-scope .policy h2:first-of-type { margin-top:0; }
 .voxime-scope .toc { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:24px 0; }
 .voxime-scope .toc a { color:var(--vox-sky); font-weight:600; padding:6px 0; transition:color .2s; }
@@ -1260,6 +1280,8 @@ body.voxime-scope {
 }
 
 @media(max-width:800px){
+  .voxime-scope .header .container { height:104px; gap:16px; }
+  .voxime-scope .brand img { height:52px; }
   .voxime-scope .header .cta { display:none; }
   .voxime-scope .menu { display:block; }
   .voxime-scope .header nav {
@@ -1285,7 +1307,7 @@ body.voxime-scope {
   .voxime-scope .plans { grid-template-columns:1fr; }
   .voxime-scope .flow { grid-template-columns:1fr; }
   .voxime-scope .grid, .voxime-scope .team-grid, .voxime-scope .testimonials { grid-template-columns:1fr; }
-  .voxime-scope .footer .container { flex-direction:column; }
+  .voxime-scope .footer .container { grid-template-columns:1fr; gap:40px; }
   .voxime-scope .footer-cols { gap:36px; }
 }
 
@@ -1309,4 +1331,109 @@ body.voxime-scope {
 @media(max-width:600px){
   .voxime-scope .hero-illustration { display:none; }
   .voxime-scope .hero-with-image { min-height:auto; padding:110px 0 100px; }
+}
+
+/* ======================================================================
+   VOXIME.AI — 3D / MOUSE-DRIVEN MOTION (same stack, scoped to .voxime-scope)
+   ====================================================================== */
+
+/* ---- Hero parallax layers ---- */
+.voxime-scope .hero-scene {
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  will-change:transform;
+}
+.voxime-scope [data-depth] { will-change:transform; }
+
+/* ---- Stats strip (overlaps hero edge) ---- */
+.voxime-scope .stats-strip {
+  position:relative;
+  z-index:3;
+  margin-top:-66px;
+  padding:0 0 96px;
+}
+.voxime-scope .signal-bar {
+  box-shadow:0 34px 80px rgba(0,0,0,.42);
+}
+@media(max-width:700px){
+  .voxime-scope .stats-strip { margin-top:-40px; padding:0 0 72px; }
+}
+@media(max-width:520px){
+  .voxime-scope .stats-strip { margin-top:0; }
+}
+
+/* ---- Snappier 3D tilt timing for tilt-enabled cards ---- */
+.voxime-scope .card,
+.voxime-scope .plan,
+.voxime-scope .team-card,
+.voxime-scope .flow > div {
+  transition:transform .18s ease-out, box-shadow .35s var(--vox-ease), border-color .35s;
+}
+
+/* ---- Glare sweep on 3D cards ---- */
+.voxime-scope .glare {
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  opacity:0;
+  z-index:1;
+  transition:opacity .3s;
+  mix-blend-mode:soft-light;
+}
+.voxime-scope .product-card .glare { z-index:2; }
+.voxime-scope .product-card:hover .glare,
+.voxime-scope .card:hover .glare,
+.voxime-scope .flow > div:hover .glare { opacity:.55; }
+
+/* ---- Magnetic buttons ---- */
+.voxime-scope .magnetic {
+  transition:transform .14s ease-out, box-shadow .25s var(--vox-ease), background .2s, border-color .2s;
+  will-change:transform;
+}
+
+/* ---- Cursor glow (desktop, motion-aware) ---- */
+.vox-cursor {
+  position:fixed;
+  top:0;
+  left:0;
+  width:600px;
+  height:600px;
+  margin:-300px 0 0 -300px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(56,189,248,.11) 0%, rgba(245,158,11,.05) 42%, transparent 68%);
+  pointer-events:none;
+  z-index:9998;
+  opacity:0;
+  mix-blend-mode:screen;
+  transition:opacity .45s ease;
+  will-change:transform;
+}
+.vox-cursor.on { opacity:1; }
+.vox-cursor.hover {
+  background:radial-gradient(circle, rgba(56,189,248,.17) 0%, rgba(245,158,11,.08) 42%, transparent 68%);
+}
+
+/* ---- Scroll progress bar ---- */
+.vox-progress {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg, var(--vox-sky), var(--vox-amber));
+  transform-origin:0 50%;
+  transform:scaleX(0);
+  z-index:60;
+  pointer-events:none;
+}
+
+/* ---- Reduced-motion guards for new effects ---- */
+@media (prefers-reduced-motion: reduce){
+  .vox-cursor { display:none; }
+  .vox-progress { display:none; }
+  .voxime-scope [data-depth] { will-change:auto; }
+  .voxime-scope .magnetic { transition:none; }
 }
